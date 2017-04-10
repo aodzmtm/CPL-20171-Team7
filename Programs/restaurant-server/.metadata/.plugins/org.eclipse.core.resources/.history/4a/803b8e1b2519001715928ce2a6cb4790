@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="SqlRestaurant">
+
+	<!-- -->
+	<select id="selectRestaurant" parameterType="java.util.HashMap"
+		resultType="restaurant.vo.RestaurantVo">
+		SELECT *,((SELECT round(sum(review_eval)/count(review_id),1)
+		FROM restaurant.review where store_id= #{store_id})) as 'store_eval'FROM
+		restaurant.store where store_id= #{store_id}
+		<!-- <if test="store_id != null"> WHERE store_id = #{store_id} </if> -->
+	</select>
+
+
+
+	<!-- -->
+	<select id="selectMenu" parameterType="java.util.HashMap"
+		resultType="restaurant.vo.MenuVo">
+		SELECT * FROM restaurant.menu
+		<if test="store_id != null">
+			WHERE store_id = #{store_id}
+		</if>
+	</select>
+
+
+	<!-- -->
+	<select id="selectReview" parameterType="java.util.HashMap"
+		resultType="restaurant.vo.ReviewVo">
+		SELECT * FROM restaurant.review r, restaurant.member m
+		<if test="store_id != null">
+			where r.member_id = m.member_id and r.store_id=#{store_id}
+		</if>
+	</select>
+
+
+	<!-- -->
+	<select id="selectEvent" parameterType="java.util.HashMap"
+		resultType="restaurant.vo.EventVo">
+		SELECT * FROM restaurant.event
+		<if test="store_id != null">
+			WHERE store_id = #{store_id}
+		</if>
+	</select>
+
+	<!-- -->
+	<insert id="insertReview" parameterType="restaurant.vo.ReviewVo">
+		INSERT INTO `restaurant`.`review`
+		(`member_id`,		
+		 `menu_id`,
+		 `review_picture`,
+		  `review_eval`, 
+		  `review_info`, 
+		  `write_date`) 
+		VALUES (
+		#{member_id},
+		#{menu_id},
+		 #{review_picture},
+		 #{review_eval},
+		 #{review_info},
+		 #{write_date})
+	</insert>
+
+
+	<insert id="insertReview" parameterType="restaurant.vo.ReviewVo">
+
+INSERT INTO `restaurant`.`admin` (`admin_id`, `beacon_id`, `admin_phone`, `admin_name`) VALUES ('#{admin}', '#{beacon_i}', '#{admin_phone}', '#{admin_name}');
+
+
+</insert>
+
+	<!-- alter table test_street_lamp_state modify id int not null AUTO_INCREMENT=1 -->
+</mapper>

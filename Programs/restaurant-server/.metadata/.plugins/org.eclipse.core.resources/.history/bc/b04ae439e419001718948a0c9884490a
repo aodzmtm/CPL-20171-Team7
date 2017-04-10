@@ -1,0 +1,29 @@
+package restaurant.vo;
+
+
+
+/**
+ * @author house
+ *
+ */
+/**
+ * @author house
+ *
+ */
+/**
+ * @author house
+ *
+ */
+public class RestaurantVo {
+	int store_id;
+	String store_address;
+	String store_picture;
+	String store_eval;
+	String store_name;
+	String store_phone;
+	String store_info;
+	String beacon_id;
+	
+	
+
+}

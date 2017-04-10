@@ -1,0 +1,11 @@
+package restaurant.vo;
+
+public class AdimVo {
+
+	String admin_id;
+	String beacon_id;
+	String admin_phone;
+	String admin_name;
+	
+
+}

@@ -1,0 +1,51 @@
+package com.project.vo;
+
+import android.graphics.drawable.Drawable;
+
+
+public class Restaurant {
+
+    private String title;
+    private String artist;
+    private String MusicId;
+    private String albumId;
+
+    public String getTitle()
+    {
+        return title;
+    }
+
+    public String getArtist()
+    {
+        return artist;
+    }
+
+    public void setTitle(String title)
+    {
+        this.title = title;
+    }
+
+    public void setArtist(String artist)
+    {
+        this.artist = artist;
+    }
+    public String getMusicId()
+    {
+        return MusicId;
+    }
+
+    public void setMusicId(String musicId)
+    {
+        MusicId = musicId;
+    }
+    public String getAlbumId()
+    {
+        return albumId;
+    }
+
+    public void setAlbumId(String albumId)
+    {
+        this.albumId = albumId;
+    }
+
+}
