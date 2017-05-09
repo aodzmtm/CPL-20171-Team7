@@ -1,0 +1,89 @@
+package restaurant.vo;
+
+/**
+ * Created by house on 2017-03-30.
+ */
+
+public class Event {
+	 int event_id;
+	    int store_id;
+	    String event_name;
+	    String event_price;
+	    String start_date;
+	    String end_date;
+	    String menu_picture;
+	    String event_info;
+	    String event_type;
+
+	    public int getEvent_id() {
+	        return event_id;
+	    }
+
+	    public void setEvent_id(int event_id) {
+	        this.event_id = event_id;
+	    }
+
+	    public int getStore_id() {
+	        return store_id;
+	    }
+
+	    public void setStore_id(int store_id) {
+	        this.store_id = store_id;
+	    }
+
+	    public String getEvent_name() {
+	        return event_name;
+	    }
+
+	    public void setEvent_name(String event_name) {
+	        this.event_name = event_name;
+	    }
+
+	    public String getEvent_price() {
+	        return event_price;
+	    }
+
+	    public void setEvent_price(String event_price) {
+	        this.event_price = event_price;
+	    }
+
+	    public String getStart_date() {
+	        return start_date;
+	    }
+
+	    public void setStart_date(String start_date) {
+	        this.start_date = start_date;
+	    }
+
+	    public String getEnd_date() {
+	        return end_date;
+	    }
+
+	    public void setEnd_date(String end_date) {
+	        this.end_date = end_date;
+	    }
+
+	    public String getMenu_picture() {
+	        return menu_picture;
+	    }
+
+	    public void setMenu_picture(String menu_picture) {
+	        this.menu_picture = menu_picture;
+	    }
+
+	    public String getEvent_info() {
+	        return event_info;
+	    }
+
+	    public void setEvent_info(String event_info) {
+	        this.event_info = event_info;
+	    }
+
+	    public String getEvent_type() {
+	        return event_type;
+	    }
+
+	    public void setEvent_type(String event_type) {
+	        this.event_type = event_type;
+	    }
+	}

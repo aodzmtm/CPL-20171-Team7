@@ -1,0 +1,13 @@
+package restaurant.vo;
+
+
+
+public class Restaurant {
+	
+	int store_id;
+	String store_adress;
+	String store_picture;
+	String store_eval;
+	String store_name;
+	String store_phone;
+}

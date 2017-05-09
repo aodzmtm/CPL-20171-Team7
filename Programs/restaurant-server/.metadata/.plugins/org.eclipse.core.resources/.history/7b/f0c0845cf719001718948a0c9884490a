@@ -1,0 +1,14 @@
+package com.project.vo;
+
+/**
+ * Created by house on 2017-04-05.
+ */
+
+public class loginSessionVo {
+
+    int loginType;
+    String member_id;
+    String admin_id;
+
+
+}
