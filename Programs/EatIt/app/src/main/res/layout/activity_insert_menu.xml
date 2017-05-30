@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_vertical"
+    >
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+            <TextView
+
+                android:id="@+id/Rwrite_letter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="What is a menu?"
+
+                android:textSize="45px" />
+        </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:orientation="vertical">
+        <LinearLayout
+            android:id="@+id/insertMenuLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!--  Email Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="3dp">
+
+                    <EditText
+
+                        android:id="@+id/menu_name_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="메뉴"
+                        android:paddingLeft="5dp" />
+                </android.support.design.widget.TextInputLayout>
+</LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!--  Password Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="3dp"
+                    android:padding="0dp">
+
+                    <EditText
+
+                        android:id="@+id/menu_price_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="메뉴가격"
+                        android:paddingLeft="5dp"
+                        android:inputType="number"
+                        android:digits="0123456789"/>
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+</LinearLayout>
+
+
+                <EditText
+                    android:id="@+id/android_textview_border"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="메뉴 정보를 입력해주세요."
+                    android:textSize="15dp"
+                    android:text=""
+                    android:background="@drawable/border"
+                    android:padding="26dp"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center"/>
+
+
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_gravity="center_horizontal"
+            >
+            <at.markushi.ui.CircleButton
+                android:id="@+id/InMenu_cam"
+                android:layout_width="50dip"
+                android:layout_height="50dip"
+                android:src="@drawable/ic_camera"
+                app:cb_color="#7777FF"
+                app:cb_pressedRingWidth="8dip"
+
+                android:layout_marginTop="30dp"
+                android:onClick="CamOnClick"/>
+            <at.markushi.ui.CircleButton
+                android:id="@+id/InMenu_nextbtn"
+                android:layout_width="50dip"
+                android:layout_height="50dip"
+                android:src="@drawable/ic_next"
+                app:cb_color="#88FF88"
+                app:cb_pressedRingWidth="8dip"
+
+                android:layout_marginTop="30dp"
+                android:onClick="onNextClick"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>

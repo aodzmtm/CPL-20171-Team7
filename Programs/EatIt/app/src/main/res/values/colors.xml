@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue">#303F9F</color>
+    <color name="accent_color">@color/blue</color>
+    <!--<color name="colorPrimary">@color/blue</color>-->
+    <!--<color name="colorPrimaryDark">@color/blue</color>-->
+    <!--<color name="colorAccent">#FF4081</color>-->
+    <color name="statusBarColor">@color/blue</color>
+    <color name="navigationBarColor">@android:color/black</color>
+    <color name="drawerArrowColor">@android:color/white</color>
+
+    <color name="lightCoral">#88F08080</color>
+    <color name="lightPink">#88FFB6C1</color>
+    <color name="lightYellow">#88FFFFE0</color>
+    <color name="lightGreen">#8890EE90</color>
+    <color name="lightCyan">#88E0FFFF</color>
+    <color name="tan">#88D2B48C</color>
+
+    <color name="colorPrimary">#3F51B5</color>
+    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorAccent">#FF4081</color>
+    <color name="primary">#FFFFFF</color>
+    <color name="primary_dark">#E12929</color>
+    <color name="primary_darker">#CC1D1D</color>
+    <color name="accent">#FFFFFF</color>
+
+    <color name="black">#000000</color>
+    <color name="jet">#222222</color>
+    <color name="oil">#333333</color>
+    <color name="monsoon">#777777</color>
+    <color name="jumbo">#888888</color>
+    <color name="aluminum">#999999</color>
+    <color name="base">#AAAAAA</color>
+    <color name="iron">#CCCCCC</color>
+    <color name="white">#FFFFFF</color>
+</resources>

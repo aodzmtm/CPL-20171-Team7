@@ -1,0 +1,249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:scrollbars="none"
+    >
+<RelativeLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp"
+    >
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_gravity="center_vertical"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:orientation="vertical"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="20dp"
+            >
+
+            <TextView
+                android:id="@+id/Rwrite_letter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="What is an event?"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="45px" />
+        </LinearLayout>
+
+
+        <LinearLayout
+
+            android:id="@+id/InsertEventLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <LinearLayout
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="30dp"
+                android:paddingRight="30dp"
+                android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical">
+                <!--  Email Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="3dp">
+
+                    <EditText
+
+                        android:id="@+id/event_name_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="이벤트"
+                        android:paddingLeft="5dp" />
+                </android.support.design.widget.TextInputLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:orientation="vertical">
+                <!--  Password Label -->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
+                    android:layout_marginTop="3dp">
+
+                    <EditText
+
+                        android:id="@+id/event_price_edit"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="이벤트 가격"
+                        android:paddingLeft="5dp"
+                        android:inputType="number"
+                        android:digits="0123456789"/>
+                </android.support.design.widget.TextInputLayout>
+
+</LinearLayout>
+
+</LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_marginTop="15dp"
+                android:orientation="horizontal"
+                >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="25dp"
+                    android:paddingRight="25dp"
+                    android:layout_marginBottom="3dp"
+                    android:layout_marginTop="5dp"
+                    android:orientation="horizontal">
+
+
+                    <TextView
+                        android:id="@+id/start_Day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_border_beacon"
+                        android:ems="10"
+                        android:onClick="onStartDay"
+                        android:padding="5dp"
+                        android:text="시작 날짜"
+                        android:textAlignment="center"
+                        android:textColor="#9F9F9E" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text=" ~ " />
+
+                    <TextView
+                        android:id="@+id/end_Day"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:background="@drawable/btn_border_beacon"
+                        android:ems="10"
+                        android:onClick="onEndDay"
+                        android:padding="5dp"
+                        android:text="종료 날짜"
+                        android:textAlignment="center"
+                        android:textColor="#9F9F9E" />
+
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal"
+                android:paddingLeft="15dp"
+                android:paddingRight="15dp">
+
+            <RelativeLayout
+
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginLeft="10dp"
+
+                android:background="@drawable/card_view_ima"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/Event_Type"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:layout_margin="2dp"
+                    android:background="@android:color/transparent"
+                    android:gravity="center"
+                    android:padding="3dp"
+                    android:spinnerMode="dropdown"
+                    android:textAlignment="center"
+                    android:textDirection="inherit" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerVertical="true"
+                    android:layout_gravity="center"
+                    android:src="@drawable/spinner_drop" />
+            </RelativeLayout>
+        </LinearLayout>
+
+            <EditText
+                android:layout_marginTop="10dp"
+                android:id="@+id/android_textview_border"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="이벤트 정보를 입력해주세요."
+                android:textSize="15dp"
+                android:background="@drawable/border"
+                android:padding="30dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:gravity="center"
+                android:layout_weight="2.41" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal">
+
+                <at.markushi.ui.CircleButton
+                    android:id="@+id/InEvent_cam"
+                    android:layout_width="50dip"
+                    android:layout_height="50dip"
+                    android:layout_below="@id/InsertEventLayout"
+
+                    android:onClick="CamOnClick"
+                    android:src="@drawable/ic_camera"
+                    app:cb_color="#7777FF"
+                    app:cb_pressedRingWidth="8dip" />
+
+                <at.markushi.ui.CircleButton
+                    android:id="@+id/InEvent_nextbtn"
+                    android:layout_width="50dip"
+                    android:layout_height="50dip"
+                    android:layout_below="@id/InsertEventLayout"
+
+                    android:onClick="onNextClick"
+                    android:src="@drawable/ic_next"
+                    app:cb_color="#88FF88"
+                    app:cb_pressedRingWidth="8dip" />
+
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</RelativeLayout>
+</ScrollView>

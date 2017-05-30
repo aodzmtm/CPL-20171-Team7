@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.eatit.restaurant">
+
+    <protected-broadcast android:name="android.intent.action.MEDIA_MOUNTED" />
+    <uses-feature android:name="android.hardware.camera" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.hardware.camera.autofocus" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+
+    <application
+        android:name=".RestaurantApplication"
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/SubTheme">
+        <activity android:name=".MainActivity"
+            android:theme="@style/AppTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".SearchActivity" />
+
+        <activity android:name=".LoginActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".InsertAdminActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".InsertMemberActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+
+        <activity android:name=".RestaurantDetailMemberActivity" />
+        <activity android:name=".RestaurantDetailManagerActivity" />
+        <activity android:name=".InsertMenuActivity" />
+        <activity android:name=".MenuInfoActivity" />
+        <activity android:name=".InsertEventActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+        <activity android:name=".InsertReviewActivity" />
+
+        <activity android:name=".InsertStoreActivity"
+            android:windowSoftInputMode="stateAlwaysHidden"/>
+    </application>
+
+</manifest>

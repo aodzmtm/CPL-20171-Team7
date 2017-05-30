@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:scrollbars="none"
+   >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="24dp"
+        >
+
+        <!-- Upload Picture Label -->
+        <ImageView
+            android:id="@+id/user_image"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/member"
+            android:onClick="onClick" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:text="프로필 사진을 등록해주세요."
+            android:textSize="13dip" />
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp"
+        android:orientation="vertical">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:orientation="vertical">
+        <!--  Email Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp">
+
+            <EditText
+
+                android:id="@+id/input_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="이메일"
+                android:inputType="textEmailAddress" />
+        </android.support.design.widget.TextInputLayout>
+</LinearLayout>
+        <LinearLayout
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <!-- Password Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp">
+
+            <EditText
+
+                android:id="@+id/input_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="비밀번호"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+</LinearLayout>
+        <LinearLayout
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <!-- Password Re-enter Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp">
+
+            <EditText
+
+                android:id="@+id/input_reEnterPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="비밀번호 재확인"
+                android:inputType="textPassword" />
+        </android.support.design.widget.TextInputLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <!-- Name Label -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp">
+
+            <EditText
+
+                android:id="@+id/input_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="이름"
+                android:inputType="textPersonName" />
+        </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_marginBottom="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+        <!-- mobile number -->
+        <android.support.design.widget.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="3dp"
+            android:layout_marginTop="3dp">
+
+            <EditText
+
+                android:id="@+id/input_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="휴대폰 번호"
+                android:inputType="number" />
+        </android.support.design.widget.TextInputLayout>
+        </LinearLayout>
+        <!-- Beacon Scanning Button -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/beacon_uuid"
+                android:layout_width="200dp"
+                android:layout_height="match_parent"
+                android:background="@null"
+                android:hint="비컨 UUID" />
+
+            <android.support.v7.widget.AppCompatButton
+                android:layout_gravity="right"
+                android:id="@+id/btn_beacon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textColor="#AFAFAD"
+                android:background="@drawable/btn_border_beacon"
+                android:text="비컨 Scan" />
+        </LinearLayout>
+</LinearLayout>
+        <!-- Signup Button -->
+        <android.support.v7.widget.AppCompatButton
+            android:id="@+id/btn_signup"
+            android:background="@drawable/btn_border"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+
+            android:padding="12dp"
+            android:textSize="20sp"
+            android:layout_marginTop="50dp"
+            android:textColor="#AFAFAD"
+            android:text="가입 하기" />
+
+        <TextView
+            android:id="@+id/link_login"
+            android:layout_marginTop="30dp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:gravity="center"
+            android:text="이미 저희 회원이신가요?    로그인 하기"
+            android:textSize="13dip" />
+
+    </LinearLayout>
+    </ScrollView>

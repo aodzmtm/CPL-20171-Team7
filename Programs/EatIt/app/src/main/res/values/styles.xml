@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <style parent="@style/Theme.AppCompat.Light.NoActionBar" name="AppBaseTheme"> </style>
+
+    <!-- Base application theme. -->
+    <style parent="AppBaseTheme" name="AppTheme">
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="drawerArrowStyle">@style/DrawerArrowStyle</item>
+        <item name="android:windowTranslucentStatus" tools:targetApi="19">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="windowActionBar">false</item>
+        <!-- Material Theme -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/accent_color</item>
+        <item name="android:statusBarColor" tools:targetApi="21">@color/statusBarColor</item>
+        <item name="android:navigationBarColor" tools:targetApi="21">@color/navigationBarColor</item>
+        <item name="android:windowDrawsSystemBarBackgrounds" tools:targetApi="21">true</item>
+    </style>
+
+    <style parent="Widget.AppCompat.DrawerArrowToggle" name="DrawerArrowStyle">
+        <item name="spinBars">true</item>
+        <item name="color">@color/drawerArrowColor</item>
+
+    </style>
+
+    <style name="DrawerTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="SubTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">#80331401</item>
+        <item name="colorAccent">#00EEEE</item>
+        <item name="colorControlNormal">#DFE0E1</item>
+
+    </style>
+
+    <style name="AppTheme.Dark.Dialog" parent="Theme.AppCompat.Dialog">
+        <item name="colorAccent">@color/white</item>
+        <item name="android:textColorPrimary">@color/iron</item>
+        <item name="android:background">@color/primary</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="spinnerItemStyle" parent="android:Widget.TextView.SpinnerItem">
+    </style>
+    <style name="spinnerDropDownItemStyle" parent="android:TextAppearance.Widget.TextView.SpinnerItem">
+    </style>
+</resources>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:id="@+id/drawer_group"
+        android:checkableBehavior="single"
+        android:visible="false"
+        >
+        <item
+            android:id="@+id/drawer_login"
+            android:icon="@drawable/login"
+            android:title="로그인"
+            android:visible="false" />
+
+        <item
+            android:id="@+id/drawer_logout"
+            android:icon="@drawable/logout"
+            android:title="로그아웃"
+            android:visible="false" />
+
+        <item
+            android:id="@+id/drawer_search"
+            android:icon="@drawable/search"
+            android:title="검색"
+            android:visible="false" />
+
+        <item
+            android:id="@+id/drawer_my_store"
+            android:icon="@drawable/store"
+            android:title="내 가게 가기"
+            android:visible="false" />
+
+        <item
+            android:id="@+id/drawer_register"
+            android:icon="@drawable/register"
+            android:title="가게 등록"
+            android:visible="false"/>
+
+        <item
+            android:id="@+id/drawer_refresh"
+            android:icon="@drawable/refresh"
+            android:title="새로고침"
+            android:visible="false" />
+    </group>
+</menu>
