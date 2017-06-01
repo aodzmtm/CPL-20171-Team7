@@ -9,7 +9,7 @@ public class MenuVo {
     String menu_price;
     int store_id;
     String  menu_info;
-    double menu_eval;
+    String menu_eval;
     String  menu_picture;
     public String getMenu_price() {
         return menu_price;
@@ -50,15 +50,15 @@ public class MenuVo {
         this.menu_info = menu_info;
     }
 
-    public double getMenu_eval() {
-        return menu_eval;
-    }
+    public String getMenu_eval() {
+		return menu_eval;
+	}
 
-    public void setMenu_eval(double menu_eval) {
-        this.menu_eval = menu_eval;
-    }
+	public void setMenu_eval(String menu_eval) {
+		this.menu_eval = menu_eval;
+	}
 
-    public String getMenu_picture() {
+	public String getMenu_picture() {
         return menu_picture;
     }
 

@@ -23,6 +23,14 @@ public class RestaurantVo {
 	String store_phone;
 	String store_info;
 	String beacon_id;
+	String store_type;
+	
+	public String getStore_type() {
+		return store_type;
+	}
+	public void setStore_type(String store_type) {
+		this.store_type = store_type;
+	}
 	public int getStore_id() {
 		return store_id;
 	}

@@ -11,25 +11,25 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 
 import common.properties.Context;
-import light.vo.TestVo;
+
 
 public class MyBatisSessionFactory
 {
 	public static final String CONTEXT_KEY = "mybatis";
 	
 	/**
-	 * MyBatis ¼³Á¤ÆÄÀÏ ¹× °æ·Î
+	 * MyBatis ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
 	 */
 	private final String MYBATIS_CONFIG_FILE;
 	
 	/**
-	 * MyBatis¸¦ ÀÌ¿ëÇØ¼­ Database sessionÀ» ¾ò¾î¿Ã ¼ö ÀÖµµ·Ï ÇÏ´Â 
+	 * MyBatisï¿½ï¿½ ï¿½Ì¿ï¿½ï¿½Ø¼ï¿½ Database sessionï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Öµï¿½ï¿½ï¿½ ï¿½Ï´ï¿½ 
 	 */
 	private static SqlSessionFactory sqlSessionFactory;
 	
 	
 	/**
-	 * »ý¼ºÀÚ : Singleton
+	 * ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ : Singleton
 	 * @throws IOException 
 	 */
 	private MyBatisSessionFactory() throws IOException
@@ -55,7 +55,7 @@ public class MyBatisSessionFactory
 	
 	
 	/**
-	 * MyBatisÀÇ SqlSessionFactory¸¦ ¹ÝÈ¯ÇÑ´Ù.
+	 * MyBatisï¿½ï¿½ SqlSessionFactoryï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½.
 	 * 
 	 * @return SqlSessionFactory
 	 * @throws IOException
@@ -80,7 +80,7 @@ public class MyBatisSessionFactory
 	
 	
 	/**
-	 * MyBatisÀÇ SqlSessionFactory¿¡¼­ SqlSessionÀ» ¹ÝÈ¯ÇÑ´Ù.
+	 * MyBatisï¿½ï¿½ SqlSessionFactoryï¿½ï¿½ï¿½ï¿½ SqlSessionï¿½ï¿½ ï¿½ï¿½È¯ï¿½Ñ´ï¿½.
 	 * 
 	 * @return SqlSession
 	 */
@@ -98,22 +98,9 @@ public class MyBatisSessionFactory
 
 	
 		SqlSession session = MyBatisSessionFactory.getSqlSession();	
+	
+		//vo ï¿½ï¿½ï¿½ 
 		
-		//vo »ç¿ë 
-		HashMap map = new HashMap<String, Object>();
-		map.put("student", "±³¼ö");
-		List<TestVo> list= session.selectList("SqlSampleMapper.daoTest",map);
-		System.out.println(list.get(0).getId());
-		System.out.println(list.get(0).getStudent());
-		
-		/*
-		//hashmap »ç¿ë
-		HashMap map = new HashMap();
-		map= session.selectList("SqlSampleMapper.hashmap");
-		System.out.println(list.get(0).getGroupCodeId());
-		System.out.println(list.get(0).getGroupCodeName());
-		
-		*/
 		session.close();
 	}
 	

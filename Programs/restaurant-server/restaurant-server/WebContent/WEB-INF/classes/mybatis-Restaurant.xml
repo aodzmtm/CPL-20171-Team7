@@ -34,9 +34,9 @@
 		</if> -->
 		SELECT * FROM restaurant.review r LEFT OUTER JOIN  restaurant.member m 
 		on r.member_id = m.member_id LEFT OUTER JOIN  restaurant.admin a on r.admin_id = a.admin_id 
-		<if test="store_id != null">
-			and r.store_id=#{store_id}
-		</if>
+
+			where r.store_id=#{store_id}
+
 		 order by write_date desc;
 	</select>
 
@@ -150,12 +150,14 @@
 		(`store_address`,
 		`store_picture`,
 		`store_name`,
+			`store_type`,
 		`beacon_id`,
 		`store_phone`,
 		`store_info`)
 		VALUES (#{store_address},
 		#{store_picture},
 		#{store_name},
+			#{store_type},
 		#{beacon_id},
 		#{store_phone},
 		#{store_info})
@@ -163,16 +165,28 @@
 	</insert>
 
 
-	<!-- -->
+	<!-- 송명근     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 	<select id="selectStore" parameterType="java.util.HashMap"
 		resultType="restaurant.vo.StoreVo">
-		SELECT * FROM restaurant.store
+			SELECT *,((SELECT round(sum(review_eval)/count(review_id),1)
+		FROM
+		restaurant.review where store_id= s.store_id)) as 'store_eval'FROM
+		restaurant.store s 
 		<if test="beacon_id != null">
-			WHERE beacon_id = #{beacon_id}
+			WHERE beacon_id in 
+			<foreach collection="beacon_id" item="item"  open="(" close=")" separator=",">
+				#{item}
+			</foreach>			
+		</if>
+		<if test="store_name != null">
+			where store_name like #{store_name}
+		<!--예제 where store_name like "경북%"; -->	
+		</if>
+		<if test="store_type != null">
+			where store_type = #{store_type}
 		</if>
 	</select>
-
-
+	<!-- 송명근     ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++-->
 	<!-- -->
 	<select id="selectMember" parameterType="java.util.HashMap"
 		resultType="restaurant.vo.MemberVo">
@@ -192,7 +206,29 @@
 	
 	</select>
 
+	<delete id="deleteMenu" parameterType="java.util.HashMap">
+	 	DELETE FROM `restaurant`.`menu` WHERE `menu_id`=#{menu_id};
+	</delete>
+	
+	<delete id="deleteEvent" parameterType="java.util.HashMap">
+		DELETE FROM `restaurant`.`event` WHERE `event_id`=#{event_id};
+	</delete>
 
+	<select id="selectMenuInfo" parameterType="java.util.HashMap"
+		resultType="restaurant.vo.MenuVo">
+		SELECT 
+		    *,
+		    (SELECT 
+		            round(SUM(review_eval) / COUNT(review_id),1)
+		        FROM
+		            restaurant.review
+		        WHERE
+		            menu_id = #{menu_id})  AS 'menu_eval'
+		FROM
+		    restaurant.menu
+		WHERE
+		    menu_id = #{menu_id}
+    </select>
 
 	<!-- alter table test_street_lamp_state modify id int not null AUTO_INCREMENT=1 -->
 </mapper>

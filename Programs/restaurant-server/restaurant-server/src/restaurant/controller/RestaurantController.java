@@ -2,6 +2,9 @@ package restaurant.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -72,6 +75,8 @@ public class RestaurantController {
 		if (memberVo != null) {
 			loginSessionVo.setLoginType(0);
 			loginSessionVo.setMember_id(memberVo.getMember_id());
+			loginSessionVo.setMember_name(memberVo.getMember_name());
+			loginSessionVo.setMember_picture(memberVo.getMember_picture());
 			loginSessionVo.setAdmin_id("");
 		}else
 		{
@@ -91,7 +96,9 @@ public class RestaurantController {
 				loginSessionVo.setLoginType(1);
 				loginSessionVo.setAdmin_id(adminVo.getAdmin_id());
 				loginSessionVo.setMember_id("");
-			
+				loginSessionVo.setAdmin_name(adminVo.getAdmin_name());
+				loginSessionVo.setAdmin_picture(adminVo.getAdmin_picture());
+				loginSessionVo.setBeacon_id(adminVo.getBeacon_id());
 			}
 		
 		}
@@ -113,7 +120,7 @@ public class RestaurantController {
 		return jsonObject.toString();
 	}
 	
-	
+/*송명근*/ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	
 	@RequestMapping(value = "/selectStore", produces = "application/json; charset=UTF-8")//송명근 이래 호출 해라
 	public @ResponseBody String getSelectStore(HttpServletRequest request, HttpServletResponse response)
@@ -125,10 +132,37 @@ public class RestaurantController {
 		// request �ޱ�
 
 		String beacon_id = request.getParameter("beacon_id");
-
+		String store_name = request.getParameter("store_name");
+		String store_type = request.getParameter("store_type");
+		
 		System.out.println("beacon_id::" + beacon_id);
+		System.out.println("store_name::" + store_name);
+		System.out.println("store_type::" + store_type);
+
 		HashMap map = new HashMap<String, Object>();
-		map.put("beacon_id", beacon_id);
+		
+		
+		
+		if(beacon_id != null)
+		{
+			String[] trans_beacon_id = beacon_id.split(",");
+			List beacon_id_list = new ArrayList();
+
+			for(int i=0; i<trans_beacon_id.length; i++)
+				{
+					beacon_id_list.add(trans_beacon_id[i].toString());
+					System.out.println(trans_beacon_id[i].toString());
+				}
+			System.out.println(beacon_id_list.size());
+			map.put("beacon_id", beacon_id_list);
+		}
+		else if(store_name != null){
+			map.put("store_name", "%"+store_name+"%");
+		}else if(store_type != null){
+			map.put("store_type", store_type);
+		}
+		
+		
 		List<RestaurantVo> list = session.selectList("SqlRestaurant.selectStore", map);
 		session.close();
 
@@ -252,7 +286,7 @@ public class RestaurantController {
 
 	@RequestMapping(value = "/insertReview", produces = "application/json; charset=utf-8")
 
-	public void insertReview(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public @ResponseBody String insertReview(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 
 		SqlSession session = MyBatisSessionFactory.getSqlSession();
@@ -301,6 +335,20 @@ public class RestaurantController {
 								"C:/Users/house/Desktop/dev/restaurant-server/restaurant-server/WebContent/review/"
 										+ fileName);
 						item.write(savedFile);
+						
+						 while(true)
+						    {
+							    URL url = new URL(SERVER_ADDR + "review/" + fileName);
+							    URLConnection con = url.openConnection();
+							    HttpURLConnection exitCode = (HttpURLConnection)con;
+		
+		
+							   if( exitCode.getResponseCode() == 200)
+								   break;
+							   else if(exitCode.getResponseCode() == 404)
+								   System.out.println("NO존재");
+						    }
+						
 						System.out.println("이미지 파일 저장:" + savedFile);
 
 						reviewVo.setReview_picture(SERVER_ADDR + "review/" + fileName);
@@ -319,11 +367,12 @@ public class RestaurantController {
 			}
 
 		}
+		return "uploaded successfully";
 	}
 
 	@RequestMapping(value = "/insertEvent", produces = "application/json; charset=utf-8")
 
-	public void insertEvent(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public @ResponseBody String insertEvent(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 
 		SqlSession session = MyBatisSessionFactory.getSqlSession();
@@ -379,6 +428,20 @@ public class RestaurantController {
 								"C:/Users/house/Desktop/dev/restaurant-server/restaurant-server/WebContent/event/"
 										+ fileName);
 						item.write(savedFile);
+						
+						 while(true)
+						    {
+							    URL url = new URL(SERVER_ADDR + "event/" + fileName);
+							    URLConnection con = url.openConnection();
+							    HttpURLConnection exitCode = (HttpURLConnection)con;
+		
+		
+							   if( exitCode.getResponseCode() == 200)
+								   break;
+							   else if(exitCode.getResponseCode() == 404)
+								   System.out.println("NO존재");
+						    }
+						
 						System.out.println("이미지 파일 저장:" + savedFile);
 						eventVo.setEvent_picture(SERVER_ADDR + "event/" + fileName);
 
@@ -396,11 +459,12 @@ public class RestaurantController {
 				session.close();
 			}
 		}
+		return "uploaded successfully";
 	}
 
 	@RequestMapping(value = "/insertMenu", produces = "application/json; charset=utf-8")
 
-	public void insertMenu(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public @ResponseBody String insertMenu(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 
 		SqlSession session = MyBatisSessionFactory.getSqlSession();
@@ -447,6 +511,18 @@ public class RestaurantController {
 								"C:/Users/house/Desktop/dev/restaurant-server/restaurant-server/WebContent/menu/"
 										+ fileName);
 						item.write(savedFile);
+					    while(true)
+					    {
+						    URL url = new URL(SERVER_ADDR + "menu/" + fileName);
+						    URLConnection con = url.openConnection();
+						    HttpURLConnection exitCode = (HttpURLConnection)con;
+	
+	
+						   if( exitCode.getResponseCode() == 200)
+							   break;
+						   else if(exitCode.getResponseCode() == 404)
+							   System.out.println("NO존재");
+					    }
 						System.out.println("이미지 파일 저장:" + savedFile);
 						menuVo.setMenu_picture(SERVER_ADDR + "menu/" + fileName);
 					} catch (Exception e) {
@@ -463,11 +539,13 @@ public class RestaurantController {
 			}
 
 		}
+		
+		return "uploaded successfully";
 	}
 
 	@RequestMapping(value = "/insertMember", produces = "application/json; charset=utf-8")
 
-	public void insertMember(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public @ResponseBody String insertMember(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 
 		SqlSession session = MyBatisSessionFactory.getSqlSession();
@@ -514,6 +592,20 @@ public class RestaurantController {
 								"C:/Users/house/Desktop/dev/restaurant-server/restaurant-server/WebContent/member/"
 										+ fileName);
 						item.write(savedFile);
+						
+						 while(true)
+						    {
+							    URL url = new URL(SERVER_ADDR + "member/" + fileName);
+							    URLConnection con = url.openConnection();
+							    HttpURLConnection exitCode = (HttpURLConnection)con;
+		
+		
+							   if( exitCode.getResponseCode() == 200)
+								   break;
+							   else if(exitCode.getResponseCode() == 404)
+								   System.out.println("NO존재");
+						    }
+						
 						System.out.println("이미지 파일 저장:" + savedFile);
 
 						memberVo.setMember_picture(SERVER_ADDR + "member/" + fileName);
@@ -530,11 +622,12 @@ public class RestaurantController {
 				session.close();
 			}
 		}
+		return "uploaded successfully";
 	}
 
 	@RequestMapping(value = "/insertAdmin", produces = "application/json; charset=utf-8")
 
-	public void insertAdmin(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public @ResponseBody String insertAdmin(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 
 		SqlSession session = MyBatisSessionFactory.getSqlSession();
@@ -585,6 +678,19 @@ public class RestaurantController {
 								"C:/Users/house/Desktop/dev/restaurant-server/restaurant-server/WebContent/admin/"
 										+ fileName);
 						item.write(savedFile);
+						 while(true)
+						    {
+							    URL url = new URL(SERVER_ADDR + "admin/" + fileName);
+							    URLConnection con = url.openConnection();
+							    HttpURLConnection exitCode = (HttpURLConnection)con;
+		
+		
+							   if( exitCode.getResponseCode() == 200)
+								   break;
+							   else if(exitCode.getResponseCode() == 404)
+								   System.out.println("NO존재");
+						    }
+						
 						System.out.println("이미지 파일 저장:" + savedFile);
 						adminVo.setAdmin_picture(SERVER_ADDR + "admin/" + fileName);
 						
@@ -601,12 +707,13 @@ public class RestaurantController {
 				session.close();
 			}
 		}
+		return "uploaded successfully";
 	}
 	
 	
 	@RequestMapping(value = "/insertStore", produces = "application/json; charset=utf-8")
 
-	public void insertStore(HttpServletRequest request, HttpServletResponse response) throws IOException {
+	public @ResponseBody String insertStore(HttpServletRequest request, HttpServletResponse response) throws IOException {
 		boolean isMultipart = ServletFileUpload.isMultipartContent(request);
 
 		SqlSession session = MyBatisSessionFactory.getSqlSession();
@@ -629,7 +736,8 @@ public class RestaurantController {
 				if (item.isFormField()) {
 					// 수정 되어야 할 부분
 
-		
+					if (item != null && item.getFieldName().equals("store_type"))
+						storeVo.setStore_type(item.getString("UTF-8"));
 			
 		
 					if (item != null && item.getFieldName().equals("store_address"))
@@ -659,6 +767,19 @@ public class RestaurantController {
 								"C:/Users/house/Desktop/dev/restaurant-server/restaurant-server/WebContent/restaurant/"
 										+ fileName);
 						item.write(savedFile);
+						 while(true)
+						    {
+							    URL url = new URL(SERVER_ADDR + "restaurant/" + fileName);
+							    URLConnection con = url.openConnection();
+							    HttpURLConnection exitCode = (HttpURLConnection)con;
+		
+		
+							   if( exitCode.getResponseCode() == 200)
+								   break;
+							   else if(exitCode.getResponseCode() == 404)
+								   System.out.println("NO존재");
+						    }
+						
 						System.out.println("이미지 파일 저장:" + savedFile);
 						storeVo.setStore_picture(SERVER_ADDR + "restaurant/" + fileName);
 						
@@ -675,9 +796,85 @@ public class RestaurantController {
 				session.close();
 			}
 		}
+		return "uploaded successfully";
 	}
 	
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+	@RequestMapping(value = "/deleteMenu", produces = "application/json; charset=UTF-8")//송명근 이래 호출 해라
+	public void getDeleteMenu(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+
+		request.setCharacterEncoding("UTF-8");
+		SqlSession session = MyBatisSessionFactory.getSqlSession();
 	
+		System.out.println("==========================================================================================================\n\n");
+		int menu_id = Integer.parseInt(request.getParameter("menu_id"));
+		
+		System.out.println("delete::"+menu_id);
+		HashMap map = new HashMap<String, Object>();
+		map.put("menu_id", menu_id);
+		
+		try {
+			session.delete("SqlRestaurant.deleteMenu", map);
+		
+		} finally {
+			session.commit();
+			session.close();
+		}
+
+	}
 	
+	@RequestMapping(value = "/deleteEvent", produces = "application/json; charset=UTF-8")//송명근 이래 호출 해라
+	public void getDeleteEvent(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+
+		request.setCharacterEncoding("UTF-8");
+		SqlSession session = MyBatisSessionFactory.getSqlSession();
+	
+		System.out.println("==========================================================================================================\n\n");
+		int event_id = Integer.parseInt(request.getParameter("event_id"));
+		
+		System.out.println("delete::"+event_id);
+		HashMap map = new HashMap<String, Object>();
+		map.put("event_id", event_id);
+		
+		try {
+			session.delete("SqlRestaurant.deleteEvent", map);
+		
+		} finally {
+			session.commit();
+			session.close();
+		}
+
+	}
+
+	@RequestMapping(value = "/selectMenuInfo", produces = "application/json; charset=UTF-8")
+	public @ResponseBody String getSelectMenuInfo(HttpServletRequest request, HttpServletResponse response)
+			throws IOException {
+
+		request.setCharacterEncoding("UTF-8");
+
+		SqlSession session = MyBatisSessionFactory.getSqlSession();
+		// request �ޱ�
+
+		int menu_id = Integer.parseInt(request.getParameter("menu_id"));
+
+		System.out.println("menu_id::" + menu_id);
+		HashMap map = new HashMap<String, Object>();
+		map.put("menu_id", menu_id);
+		List<MenuVo> list = session.selectList("SqlRestaurant.selectMenuInfo", map);
+		session.close();
+
+		JSONArray jsonArray = JSONArray.fromObject(list);
+
+		map = new HashMap<String, Object>();
+		map.put("menu", jsonArray);
+
+		JSONObject jsonObject = JSONObject.fromObject(map);
+		System.out.println("json - " + jsonObject.toString());
+		return jsonObject.toString();
+	}
+
 
 }
