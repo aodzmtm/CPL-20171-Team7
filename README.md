@@ -16,4 +16,4 @@ Program - 소스 코드
 
 Report - 보고서
 
-Thesis - 논문
+Thesis - 논문, 특허
