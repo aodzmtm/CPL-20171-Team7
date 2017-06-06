@@ -8,10 +8,10 @@ Hierarchy:
 
 Meeting Minutes - 회의록
 
-Presentation    - 발표 자료
+Presentation - 발표 자료
 
-Program         - 소스
+Program - 소스 코드
 
-Report          - 보고서
+Report - 보고서
 
-Thesis          - 논문
+Thesis - 논문
