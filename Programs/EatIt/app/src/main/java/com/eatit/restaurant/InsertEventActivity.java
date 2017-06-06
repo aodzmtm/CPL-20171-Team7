@@ -59,7 +59,6 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
 
     ;
     private String TAG = "멀티파트 테스트";
-
     //CAM
     private final int PICK_FROM_ALBUM = 1;
 
@@ -74,9 +73,6 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
     private Spinner spinner;
     private ArrayList<String> SpinnerItem;
 
-    //아래 코드 고쳐야 할부분
-    ///////////////////////////////////////////////////////////////////
-
     int store_id;
     String event_name = null;
     String event_price = null;
@@ -85,7 +81,6 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
     String event_info = null;
     String event_type = null;
 
-    /////////////////////////////////////////////////////////////////
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -98,7 +93,7 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
         TextView name = (TextView) findViewById(R.id.Rwrite_letter);
         Typeface Hi = Typeface.createFromAsset(this.getAssets(), "fonts/JejuHallasan.ttf");
         name.setTypeface(Hi);
-        ///////////////////////////////////////////////////////////////////
+        
         event_name = null;
         event_price = null;
         start_date = "";
@@ -106,17 +101,16 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
         event_info = "";
         event_type = null;
         store_id = Integer.parseInt(i.getStringExtra("store_id"));
-        ////////////////////////////////////////////////////////////////////
 
         StartDay = (TextView) findViewById(R.id.start_Day);
         EndDay = (TextView)findViewById(R.id.end_Day);
 
         EventName = (EditText) findViewById(R.id.event_name_edit);
-        EventName.setError("Event name is required"); // show error
+        EventName.setError("Event name is required");
         EventName.setError(null);
 
         EventPrice= (EditText) findViewById(R.id.event_price_edit);
-        EventPrice.setError("Event Price is required"); // show error
+        EventPrice.setError("Event Price is required"); 
         EventPrice.setError(null);
 
         EventInfo = (EditText) findViewById(R.id.android_textview_border);
@@ -164,9 +158,6 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
 
             dataStream = new DataOutputStream(conn.getOutputStream());
 
-            //아래에 고쳐야 할 부분
-            //////////////////////////////////////////////////////////////////////////////////////////////////
-
             writeFormField("event_name", event_name);
             writeFormField("event_price", event_price);
             writeFormField("start_date", start_date);
@@ -176,9 +167,8 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
             writeFormField("store_id", Integer.toString(store_id));
 
             if (fileInputStream != null)
-                writeFileField("photo", pictureFileName, "image/jpg", fileInputStream,pictureFileName);
-            ///////////////////////////////////////////////////////////////////////////////////////////////////
-
+                writeFileField("photo", pictureFileName, "image/jpg", fileInputStream,pictureFileName);  
+            
             dataStream.writeBytes(twoHyphens + boundary + twoHyphens + CRLF);
             if (fileInputStream != null)
                 fileInputStream.close();
@@ -208,9 +198,7 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
         }
     }
 
-
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    private String getResponse(HttpURLConnection conn) {
+   private String getResponse(HttpURLConnection conn) {
 
         try {
             DataInputStream dis = new DataInputStream(conn.getInputStream());
@@ -238,7 +226,7 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
             while ((ch = is.read()) != -1) {
                 sb.append((char) ch);
             }
-            return sb.toString();   // TODO Auto-generated method stub
+            return sb.toString();  
         } catch (Exception e) {
             Log.e(TAG, "AndroidUploader: " + e);
         } finally {
@@ -252,12 +240,6 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
     }
 
 
-    /**
-     * write one form field to dataSream
-     *
-     * @param fieldName
-     * @param fieldValue
-     */
     private void writeFormField(String fieldName, String fieldValue) {
         try {
 
@@ -273,14 +255,6 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
         }
     }
 
-
-    /**
-     * write one file field to dataSream
-     * @param fieldName - name of file field
-     * @param fieldValue - file name
-     * @param type - mime type
-     * @param fis - stream of bytes that get sent up
-     */
     private void writeFileField(
             String fieldName,
             String fieldValue,
@@ -297,7 +271,6 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
                     + CRLF);
             dataStream.writeBytes("Content-Type: " + type +  CRLF);
             dataStream.writeBytes(CRLF);
-            // create a buffer of maximum size
             dataStream.write(convertBitmap(path));
 
             dataStream.writeBytes(CRLF);
@@ -364,7 +337,6 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
             int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, -1);
             if (orientation != -1)
             {
-                // We only recognize a subset of orientation tag values.
                 switch(orientation)
                 {
                     case ExifInterface.ORIENTATION_ROTATE_90:
@@ -382,10 +354,6 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
         return degree;
     }
 
-
-    /**
-     * Day select click
-     */
     public void onStartDay(View v) {
         Calendar c = Calendar.getInstance();
         int cyear = c.get(Calendar.YEAR);
@@ -393,8 +361,7 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
         int cday = c.get(Calendar.DAY_OF_MONTH);
 
         DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            // onDateSet method
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+                public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 String date_selected = String.valueOf(year) + "-" + String.valueOf(monthOfYear + 1) +
                         "-" + String.valueOf(dayOfMonth);
                 set_Startday(date_selected);
@@ -412,8 +379,7 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
         int cday = c.get(Calendar.DAY_OF_MONTH);
 
         DatePickerDialog.OnDateSetListener mDateSetListener = new DatePickerDialog.OnDateSetListener() {
-            // onDateSet method
-            public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
+           public void onDateSet(DatePicker view, int year, int monthOfYear, int dayOfMonth) {
                 String date_selected = String.valueOf(year) + "-" + String.valueOf(monthOfYear + 1) +
                         "-" + String.valueOf(dayOfMonth);
                 set_Endday(date_selected);
@@ -450,10 +416,8 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
             Toast.makeText(InsertEventActivity.this, "이벤트 정보는 필수입니다.", Toast.LENGTH_SHORT).show();
         if(mImageCaptureUri == null)
             Toast.makeText(InsertEventActivity.this, "이벤트 사진은 필수입니다.", Toast.LENGTH_SHORT).show();
-            //     }else{
+          
         else{
-            //아래 코드 고쳐야 할부분
-            ///////////////////////////////////////////////////////////////////
             ProgressDialog pb = new ProgressDialog(InsertEventActivity.this);
             pb.setMessage("저장 중 입니다.....");
             pb.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -475,9 +439,6 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
         }
     }
 
-    /**
-     * Spinner Listener
-     */
     @Override
     public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
         if (arg2 > 0)
@@ -489,9 +450,6 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
 
     }
 
-    /**
-     * Cam Click Listener
-     */
     public void CamOnClick(View v) {
         new TedPermission(this)
                 .setPermissionListener(permissionlistener)
@@ -520,9 +478,7 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
         }
 
     }
-    /**
-     * return : picture path
-     */
+    
     public String getPath(Uri uri) {
         String[] projection = {
                 MediaStore.Images.Media.DATA
@@ -535,9 +491,6 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
         return cursor.getString(columnIndex);
     }
 
-    /**
-     * PermissionCheck
-     */
     PermissionListener permissionlistener = new PermissionListener() {
         @Override
         public void onPermissionGranted() {
@@ -551,9 +504,6 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
 
     };
 
-    /**
-     * 숫자 세글자마다 콤마
-     */
     String Add_comma_to_num(String str) {
         String result="";
 
@@ -566,9 +516,7 @@ public class InsertEventActivity extends AppCompatActivity implements AdapterVie
         try {
             double inputNum = Double.parseDouble(str);
             result = df.format(inputNum).toString();
-        } catch (NumberFormatException e) {
-            // TODO: handle exception
-        }
+        } catch (NumberFormatException e) {             }
         return result;
     }
 }
