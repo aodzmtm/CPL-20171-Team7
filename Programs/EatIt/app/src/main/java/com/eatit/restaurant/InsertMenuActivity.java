@@ -50,17 +50,17 @@ public class InsertMenuActivity extends AppCompatActivity {
     enum ReturnCode { noPicture, unknown, http201, http400, http401, http403, http404, http500};
     private String TAG = "멀티파트 테스트";
 
-    //CAM
+    
     private final int PICK_FROM_ALBUM = 1;
 
     private Uri mImageCaptureUri = null;
 
-    ///////////////////////////////////////////////////////////////////
+    
     String  menu_name;
     String menu_price;
     int store_id;
     String  menu_info;
-    /////////////////////////////////////////////////////////////////
+    
     private EditText MenuName;
     private EditText MenuPrice;
     private EditText MenuInfo;
@@ -81,19 +81,21 @@ public class InsertMenuActivity extends AppCompatActivity {
         Typeface Hi = Typeface.createFromAsset(this.getAssets(), "fonts/JejuHallasan.ttf");
         name.setTypeface(Hi);
 
-        ///////////////////////////////////////////////////////////////////
+        
         menu_name=null;
         menu_price=null;
         menu_info=null;
         store_id =Integer.parseInt(i.getStringExtra("store_id"));
-        /////////////////////////////////////////////////////////////////
+        
 
         MenuName = (EditText) findViewById(R.id.menu_name_edit);
-        MenuName.setError("Menu name is required"); // show error
+        MenuName.setError("Menu name is required"); 
+        
         MenuName.setError(null);
 
         MenuPrice= (EditText) findViewById(R.id.menu_price_edit);
-        MenuPrice.setError("Menu Price is required"); // show error
+        MenuPrice.setError("Menu Price is required"); 
+       
         MenuPrice.setError(null);
 
         MenuInfo=(EditText) findViewById(R.id.android_textview_border);
@@ -122,8 +124,7 @@ public class InsertMenuActivity extends AppCompatActivity {
 
             dataStream = new DataOutputStream(conn.getOutputStream());
 
-            //아래에 고쳐야 할 부분
-            //////////////////////////////////////////////////////////////////////////////////////////////////
+            
 
             writeFormField("menu_name",menu_name );
             writeFormField("menu_price",menu_price );
@@ -132,7 +133,7 @@ public class InsertMenuActivity extends AppCompatActivity {
 
             if( fileInputStream  != null)
                 writeFileField("photo", pictureFileName, "image/jpg", fileInputStream,pictureFileName);
-            ///////////////////////////////////////////////////////////////////////////////////////////////////
+            
 
             dataStream.writeBytes(twoHyphens + boundary + twoHyphens + CRLF);
             if( fileInputStream  != null)
@@ -166,7 +167,7 @@ public class InsertMenuActivity extends AppCompatActivity {
         }
     }
 
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+   
     private String getResponse(HttpURLConnection conn) {
 
         try {
@@ -197,7 +198,8 @@ public class InsertMenuActivity extends AppCompatActivity {
             while( ( ch = is.read() ) != -1 ) {
                 sb.append( (char)ch );
             }
-            return sb.toString();   // TODO Auto-generated method stub
+            return sb.toString();   
+            
         }
         catch(Exception e)   {
             Log.e(TAG, "AndroidUploader: "+e);
@@ -212,11 +214,7 @@ public class InsertMenuActivity extends AppCompatActivity {
     }
 
 
-    /**
-     * write one form field to dataSream
-     * @param fieldName
-     * @param fieldValue
-     */
+    
     private void writeFormField(String fieldName, String fieldValue)  {
         try  {
 
@@ -232,15 +230,7 @@ public class InsertMenuActivity extends AppCompatActivity {
         }
     }
 
-
-
-    /**
-     * write one file field to dataSream
-     * @param fieldName - name of file field
-     * @param fieldValue - file name
-     * @param type - mime type
-     * @param fis - stream of bytes that get sent up
-     */
+    
     private void writeFileField(
             String fieldName,
             String fieldValue,
@@ -324,7 +314,7 @@ public class InsertMenuActivity extends AppCompatActivity {
             int orientation = exif.getAttributeInt(ExifInterface.TAG_ORIENTATION, -1);
             if (orientation != -1)
             {
-                // We only recognize a subset of orientation tag values.
+                
                 switch(orientation)
                 {
                     case ExifInterface.ORIENTATION_ROTATE_90:
@@ -342,12 +332,7 @@ public class InsertMenuActivity extends AppCompatActivity {
         return degree;
     }
 
-
-
-
-    /**
-     * Next Click Listener
-     */
+    
     public void onNextClick(View v) {
         menu_name = MenuName.getText().toString();
         menu_info = MenuInfo.getText().toString();
@@ -384,10 +369,7 @@ public class InsertMenuActivity extends AppCompatActivity {
             thread.start();
         }
     }
-
-    /**
-     * Cam Click Listener
-     */
+    
     public void CamOnClick(View v) {
         new TedPermission(InsertMenuActivity.this)
                 .setPermissionListener(permissionlistener)
@@ -416,9 +398,8 @@ public class InsertMenuActivity extends AppCompatActivity {
         }
 
     }
-    /**
-     * return : picture path
-     */
+    
+    
     public String getPath(Uri uri) {
         String[] projection = {
                 MediaStore.Images.Media.DATA
@@ -431,9 +412,7 @@ public class InsertMenuActivity extends AppCompatActivity {
         return cursor.getString(columnIndex);
     }
 
-    /**
-     * PermissionCheck
-     */
+    
     PermissionListener permissionlistener = new PermissionListener() {
         @Override
         public void onPermissionGranted() {
@@ -447,9 +426,7 @@ public class InsertMenuActivity extends AppCompatActivity {
 
     };
 
-    /**
-     * 숫자 세글자마다 콤마
-     */
+    
     String Add_comma_to_num(String str) {
         String result="";
 
@@ -463,7 +440,7 @@ public class InsertMenuActivity extends AppCompatActivity {
             double inputNum = Double.parseDouble(str);
             result = df.format(inputNum).toString();
         } catch (NumberFormatException e) {
-            // TODO: handle exception
+            
         }
         return result;
     }
