@@ -1,3 +1,0 @@
-#Tomcat publish data
-#Mon May 22 22:31:32 KST 2017
-org.eclipse.jst.jee.server\:/binary\:C\:\\Users\\house\\Desktop\\dev\\restaurant-server\\restaurant-server\\WebContent\\WEB-INF\\lib\\spring-web-4.3.2.RELEASE.jar=WEB-INF/lib/spring-web-4.3.2.RELEASE.jar
