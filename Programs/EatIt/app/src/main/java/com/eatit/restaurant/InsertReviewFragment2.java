@@ -25,12 +25,8 @@ import at.markushi.ui.CircleButton;
 
 import static android.app.Activity.RESULT_OK;
 
-/**
- * A simple {@link Fragment} subclass.
- */
 public class InsertReviewFragment2 extends Fragment implements View.OnClickListener{
 
-    //CAM
     private final int PICK_FROM_CAMERA=0;
     private final int PICK_FROM_ALBUM=1;
 
@@ -40,7 +36,6 @@ public class InsertReviewFragment2 extends Fragment implements View.OnClickListe
     EditText coment;
 
     public InsertReviewFragment2() {
-        // Required empty public constructor
     }
 
 
